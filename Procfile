@@ -1,0 +1,1 @@
+web: gunicorn ear_to_the_sound.wsgi
