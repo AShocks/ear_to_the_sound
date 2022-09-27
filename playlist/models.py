@@ -4,6 +4,7 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, 'Draft'), (1, 'Published'))
 
+
 class Playlist(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
@@ -30,11 +31,11 @@ class Playlist(models.Model):
     def number_of_likes(self):
         return self.likes.count()
 
+
 class Comment(models.Model):
     playlist = models.ForeignKey(
-        Playlist, 
-        on_delete=models.CASCADE,
-        related_name="comments")
+               Playlist, on_delete=models.CASCADE,
+               related_name="comments")
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
@@ -46,5 +47,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
-
-
